@@ -24,7 +24,7 @@ function visualize(targetElement, xmldata){
     summaryDl.className = "row";
     targetElement.appendChild(summaryDl);
     //time
-    appendDlChild(summaryDl, "time", time);
+    appendDlChild(summaryDl, '<span class="text-body">time</span>', time + '<span class="text-muted">&nbsp;sec</span>');
     //success
     appendDlChild(summaryDl, '<span class="text-success">success</span>', successCount);
     //failure
@@ -53,7 +53,7 @@ function visualize(targetElement, xmldata){
         let summaryDl = document.createElement("dl");
         summaryDl.className = "row";
         //time
-        appendDlChild(summaryDl, "time", time);
+        appendDlChild(summaryDl, '<span class="text-body">time</span>', time + '<span class="text-muted">&nbsp;sec</span>');
         //success
         appendDlChild(summaryDl, '<span class="text-success">success</span>', successCount);
         //failure
@@ -76,7 +76,7 @@ function visualize(targetElement, xmldata){
             row.appendChild(col);
             col = document.createElement("dd");
             col.className = "col-md-1"
-            col.innerHTML = testcase.getAttribute("time")
+            col.innerHTML = testcase.getAttribute("time") + '<span class="text-muted">&nbsp;sec</span>';
             row.appendChild(col);
             col = document.createElement("dd");
             col.className = "col-md-4"
