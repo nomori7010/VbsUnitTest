@@ -1,0 +1,96 @@
+<job>
+<script language="vbscript" src="class/VbsUnitTest.vbs"></script>
+<script language="vbscript" src="calc.vbs"></script>
+<script language="vbscript">
+    Dim Expected, Actual
+    Set Test = new VbsUnitTest
+    Test.BeginTest WScript.ScriptName
+
+    Test.BeginTestsuite "Sum"
+
+    Test.BeginTestcase "Sum(1, 2) returns 3"
+    Expected = 3
+    Actual = Sum(1, 2)
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.BeginTestcase "Sum(""1"", ""2"") returns 3"
+    Expected = 3
+    Actual = Sum("1", "2")
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.BeginTestcase "Sum(null, 2) returns 2"
+    Expected = 2
+    Actual = Sum(null, 2)
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.BeginTestcase "Sum(""abc"", 2) returns 2"
+    Expected = 2
+    Actual = Sum("abc", 2)
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.EndTestsuite
+
+    Test.BeginTestsuite "Diff"
+    
+    Test.BeginTestcase "Diff(1, 2) returns -1"
+    Expected = -1
+    Actual = Diff(1, 2)
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+
+    Test.BeginTestcase "Diff(""1"", ""2"") returns -1"
+    Expected = -1
+    Actual = Diff("1", "2")
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.BeginTestcase "Diff(null, 2) returns -2"
+    Expected = -2
+    Actual = Diff(null, 2)
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.BeginTestcase "Diff(""abc"", 2) returns -2"
+    Expected = -2
+    Actual = Diff("abc", 2)
+    Test.AssertEquals Expected, Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.EndTestsuite
+
+    Test.BeginTestsuite "IsOdd"
+    
+    Test.BeginTestcase "IsOdd(1) returns True"
+    Actual = IsOdd(1)
+    Test.AssertTrue Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+
+    Test.BeginTestcase "IsOdd(2) returns False"
+    Actual = IsOdd(2)
+    Test.AssertFalse Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+    
+    Test.EndTestsuite
+
+    Test.BeginTestsuite "IsEven"
+    
+    Test.BeginTestcase "IsEven(1) returns False"
+    Actual = IsEven(1)
+    Test.AssertFalse Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+
+    Test.BeginTestcase "IsEven(2) returns True"
+    Actual = IsEven(2)
+    Test.AssertTrue Actual, "Expected is '" & Expected & "'.but Actual is '" & Actual & "'"
+    Test.EndTestcase
+
+    Test.EndTestsuite
+
+    Test.EndTest
+    WScript.Echo Test.Xml()
+</script>
+</job>
